@@ -18,8 +18,8 @@ cd "$REPO_NAME"
 cp ../template-files/* .
 
 # Configure Git
-git config user.name "github-actions[bot]"
-git config user.email "github-actions[bot]@users.noreply.github.com"
+git config user.name "udsinghh"
+git config user.email "uditisingh1999@gmail.com"
 
 # Add, commit and push files
 git add .
