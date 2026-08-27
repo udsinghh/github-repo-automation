@@ -19,4 +19,4 @@ jobs:
       - name: Run repository creation script
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: bash scripts/create-repo.sh "${{ inputs.repo_name }}"
+        run: bash scripts/create-repo.sh "${{ inputs.repo_name }}" "${{ github.repository_owner }}"
