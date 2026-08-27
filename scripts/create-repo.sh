@@ -2,6 +2,7 @@
 
 REPO_NAME=$1
 ORG="repo-automation-org"
+TEAM="team-a"
 
 echo "Creating repository: $REPO_NAME"
 
@@ -10,6 +11,11 @@ gh auth setup-git
 
 # Create private repository inside the organization
 gh repo create "$ORG/$REPO_NAME" --private
+
+# Add Team-A with Read permission
+gh api --method PUT \
+  "/orgs/$ORG/teams/$TEAM/repos/$ORG/$REPO_NAME" \
+  -f permission=pull
 
 # Clone the newly created repository
 gh repo clone "$ORG/$REPO_NAME"
