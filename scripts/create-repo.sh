@@ -1,18 +1,18 @@
 #!/bin/bash
 
 REPO_NAME=$1
-OWNER=$2
+ORG="repo-automation-org"
 
 echo "Creating repository: $REPO_NAME"
 
 # Authenticate Git using GitHub token
 gh auth setup-git
 
-# Create private repository
-gh repo create "$REPO_NAME" --private
+# Create private repository inside the organization
+gh repo create "$ORG/$REPO_NAME" --private
 
 # Clone the newly created repository
-gh repo clone "$OWNER/$REPO_NAME"
+gh repo clone "$ORG/$REPO_NAME"
 
 # Go inside the new repository
 cd "$REPO_NAME"
