@@ -2,11 +2,19 @@ name: Repository Creation Automation
 
 on:
   workflow_dispatch:
+    inputs:
+      repo_name:
+        description: "Enter the new repository name"
+        required: true
+        type: string
 
 jobs:
-  test:
+  create-repository:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Test workflow
-        run: echo "GitHub Actions workflow is working"
+      - name: Checkout automation repository
+        uses: actions/checkout@v4
+
+      - name: Run repository creation script
+        run: bash scripts/create-repo.sh "${{ inputs.repo_name }}"
